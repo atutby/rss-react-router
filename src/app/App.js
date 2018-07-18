@@ -1,11 +1,14 @@
 import React, { Component } from "react";
-import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
+import { BrowserRouter, Switch, Route, NavLink, Redirect } from "react-router-dom";
 import Home from "./home/home";
 import Levels from "./levels/levels";
 import { Blocking } from "./blocking/blocking";
 import { Miss } from './miss/miss';
 import NoMatch from './miss/no-match';
 import { QueryParams } from './query/query';
+import fakeAuth from './auth/auth';
+import Login from './auth/login';
+import Protected from './auth/protected';
 import "./App.css";
 
 class App extends Component {
@@ -34,7 +37,16 @@ class App extends Component {
                 Miss
               </NavLink>
             </li>
-            <li><NavLink to="/query-params" activeClassName="active">Query Params</NavLink></li>
+            <li>
+              <NavLink to="/query-params" activeClassName="active">
+                Query Params
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/protected" activeClassName="active">
+                Protected
+              </NavLink>
+            </li>
           </ul>
 
           <Switch>
@@ -43,6 +55,22 @@ class App extends Component {
             <Route path="/blocking" component={Blocking} />
             <Route path="/miss" component={Miss} />
             <Route path="/query-params" component={QueryParams} />
+            <Route path="/login" component={Login} />
+            <Route
+              path="/protected"
+              component={() =>
+                fakeAuth.isAuthenticated ? (
+                  <Protected />
+                ) : (
+                  <Redirect
+                    to={{
+                      pathname: "/login",
+                      state: { from: "/protected" }
+                    }}
+                  />
+                )
+              }
+            />
             <Route component={NoMatch} />
           </Switch>
         </div>
