@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter, Route, NavLink } from "react-router-dom";
 import Home from "./home/home";
 import Levels from "./levels/levels";
+import Blocking from "./blocking/blocking";
 import "./App.css";
 
 class App extends Component {
@@ -11,19 +12,27 @@ class App extends Component {
         <div>
           <ul>
             <li>
-              <NavLink to="/" activeClassName="active">
+              <NavLink exact to="/" activeClassName="active">
                 Home
               </NavLink>
             </li>
             <li>
-              <NavLink to="/basic-routing" activeClassName="active">
-                BasicRouting
+              <NavLink to="/levels" activeClassName="active">
+                Levels
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/blocking" activeClassName="active">
+                Blocking
               </NavLink>
             </li>
           </ul>
 
-          <Route path="/" component={Home} />
-          <Route path="/basic-routing" component={Levels} />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/levels" component={Levels} />
+            <Route path="/blocking" component={Blocking} />
+          </Switch>
         </div>
       </BrowserRouter>
     );
