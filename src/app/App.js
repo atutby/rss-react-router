@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
 import Home from "./home/home";
 import Levels from "./levels/levels";
 import { Blocking } from "./blocking/blocking";
-import Miss from './miss/miss';
+import { Miss } from './miss/miss';
 import NoMatch from './miss/no-match';
 import "./App.css";
 
