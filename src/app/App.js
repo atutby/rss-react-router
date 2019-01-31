@@ -5,7 +5,7 @@ import Levels from "./levels/levels";
 import { Blocking } from "./blocking/blocking";
 import { Miss } from './miss/miss';
 import NoMatch from './miss/no-match';
-import QueryParams from './query/query';
+import { QueryParams } from './query/query';
 import "./App.css";
 
 class App extends Component {
