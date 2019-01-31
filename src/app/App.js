@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, NavLink } from "react-router-dom";
+import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
 import Home from "./home/home";
 import Levels from "./levels/levels";
-import Blocking from "./blocking/blocking";
+import { Blocking } from "./blocking/blocking";
 import "./App.css";
 
 class App extends Component {
