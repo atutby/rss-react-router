@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
+import { BrowserRouter, Route, NavLink } from "react-router-dom";
 import Home from "./home/home";
-import Levels from './levels/levels';
+import Levels from "./levels/levels";
 import "./App.css";
 
 class App extends Component {
@@ -14,7 +14,11 @@ class App extends Component {
               <NavLink to="/" activeClassName="active">
                 Home
               </NavLink>
-              <li><NavLink to="/basic-routing" activeClassName="active">BasicRouting</NavLink></li>
+            </li>
+            <li>
+              <NavLink to="/basic-routing" activeClassName="active">
+                BasicRouting
+              </NavLink>
             </li>
           </ul>
 

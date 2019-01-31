@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { Switch, Route, Link } from "react-router-dom";
-import Level from "./level/level";
+import React from "react";
+import { Route, Link } from "react-router-dom";
+import { Level } from "./level/level";
 
-const Levels = props => {
+const Levels = ({ match: { url } }) => {
   return (
     <div>
       <h1>Levels</h1>
@@ -17,27 +17,21 @@ const Levels = props => {
       <div className="leftNavi">
         <ul>
           <li>
-            <Link to={props.match.url + "/level1"} className="active">
+            <Link to={`${url}/level1`}>
               Level 1
             </Link>
           </li>
           <li>
-            <Link to={props.match.url + "/level2"} className="active">
-              Level 2
-            </Link>
+            <Link to={`${url}/level2`}>Level 2</Link>
           </li>
           <li>
-            <Link to={props.match.url + "/level3"} className="active">
-              Level 3
-            </Link>
+            <Link to={`${url}/level3`}>Level 3</Link>
           </li>
         </ul>
       </div>
       <div className="rightContent">
         <p>Second Level Content will appear here:</p>
-        {/*<Switch>*/}
-        <Route path={`${props.match.url}/:level`} component={Level} />
-        {/*</Switch>*/}
+        <Route path={`${url}/:level`} component={Level} />
       </div>
     </div>
   );
