@@ -1,14 +1,20 @@
 import React, { Component } from "react";
-import { BrowserRouter, Switch, Route, NavLink, Redirect } from "react-router-dom";
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  NavLink,
+  Redirect
+} from "react-router-dom";
 import Home from "./home/home";
 import Levels from "./levels/levels";
 import { Blocking } from "./blocking/blocking";
-import { Miss } from './miss/miss';
-import NoMatch from './miss/no-match';
-import { QueryParams } from './query/query';
-import fakeAuth from './auth/auth';
-import Login from './auth/login';
-import Protected from './auth/protected';
+import { Miss } from "./miss/miss";
+import NoMatch from "./miss/no-match";
+import { QueryParams } from "./query/query";
+import fakeAuth from "./auth/auth";
+import Login from "./auth/login";
+import Protected from "./auth/protected";
 import "./App.css";
 
 class App extends Component {
@@ -58,14 +64,14 @@ class App extends Component {
             <Route path="/login" component={Login} />
             <Route
               path="/protected"
-              component={() =>
+              component={({ location }) =>
                 fakeAuth.isAuthenticated ? (
                   <Protected />
                 ) : (
                   <Redirect
                     to={{
                       pathname: "/login",
-                      state: { from: "/protected" }
+                      state: { from: location }
                     }}
                   />
                 )
